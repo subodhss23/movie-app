@@ -11,10 +11,13 @@
 	<div class="container">
 		<div class="row">
 			<div class="col-sm-12">
-				<h1></h1>
+				<h1>Now Playing</h1>
 			</div>
 			<div class="col-sm-12">
-				
+				<!--we have an array called parsedData--->
+				<% parsedData.forEach(function(movie){%>
+						<%= movie.title %>
+					<% }) %>
 				
 			</div>
 		</div>
