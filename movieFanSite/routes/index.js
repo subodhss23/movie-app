@@ -33,4 +33,20 @@ router.get('/', function(req, res, next) {
   ;
 });
 
+
+// /movie/:id is a wild card route.
+router.get('/movie/:id', function(req, res, next){
+  // res.json(req.params.id);
+  const movieId = req.params.id;
+  const thisMovieUrl = `${apiBaseUrl}/movie/${movieId}?api_key=${apiKey}`;
+  // res.send(thisMovieUrl);
+  request.get(thisMovieUrl, function(error, response, movieData){
+    const parsedData = JSON.parse(movieData);
+    res.render('single-movie', {
+      parsedData: parsedData
+    })
+  })
+})
+
 module.exports = router;
+
