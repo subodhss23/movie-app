@@ -16,7 +16,10 @@
 			<div class="col-sm-12">
 				<!--we have an array called parsedData--->
 				<% parsedData.forEach(function(movie){%>
-						<%= movie.title %>
+					<div class="col-md-3 col-sm-4 poster">
+						<img src="<%= imageBaseUrl + movie.poster_path %>"/>
+					</div>
+					
 					<% }) %>
 				
 			</div>
