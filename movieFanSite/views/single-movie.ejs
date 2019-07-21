@@ -13,7 +13,7 @@
 					<%= parsedData.tagline %>
 				</h3>
 				
-				<img src="<%= imageBaseUrl+parsedData.poster_path %>" />
+				<a href="<%= parsedData.homepage %>"><img src="<%= imageBaseUrl+parsedData.poster_path %>" /></a>
 				
 				<p class="overview-header">Movie Synopsis: <span class="single-movie-overview">
 					<%= parsedData.overview %>
@@ -38,8 +38,11 @@
         <h4 class="modal-title" id="myModalLabel">Movie Information</h4>
       </div>
       <div class="modal-body">
-
-
+					<a href="https://www.imdb.com/title/<%= parsedData.imdb_id %>" target="_blank">IMDB link</a>
+					<p> Budget:-  $<%= parsedData.budget %></p>
+					<p> Revenue:- $<%= parsedData.revenue %></p>
+					<p> Release date:-<%= parsedData.release_date %></p>
+					<p>Production Company:- <%= parsedData.production_companies[0].name %></p>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
