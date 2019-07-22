@@ -9,14 +9,21 @@ router.get('/', function(req, res, next) {
 });
 
 router.get('/most_popular', function(req, res, next){
-  if(req.query.api_key != 123456789){
-    res.json("Invalid API key");
-  } else {
-    const results = movies.filter(function(movie){
+  // get the page variable from the query string
+  let page = req.query.page;
+  if(page === undefined){ page = 1;}
+  // if(req.query.api_key != 123456789){
+  //   res.json("Invalid API key");
+  // } else {
+    let results = movies.filter(function(movie){
       return movie.most_popular;
   })
-  res.json(results);
-}
+  const indexToStart = (page-1) * 20;
+  results = results.slice(indexToStart, indexToStart + 19);
+  res.json({
+    page,
+    results
+  });
 });
 
 
